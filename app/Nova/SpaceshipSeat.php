@@ -4,25 +4,24 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Spaceship extends Resource
+class SpaceshipSeat extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Spaceship';
+    public static $model = 'App\SpaceshipSeat';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -30,7 +29,7 @@ class Spaceship extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'model'
+        'id',
     ];
 
     /**
@@ -44,15 +43,10 @@ class Spaceship extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
+            BelongsTo::make('Travel Category', 'travelCategory', 'App\Nova\TravelCategory'),
 
-            Text::make('Model')
-                ->sortable()
-                ->rules('required', 'max:255'),
-            
-            HasMany::make('Spaceship Seats', 'spaceshipSeats', 'App\Nova\SpaceshipSeat')                        
+            BelongsTo::make('Spaceship', 'spaceship', 'App\Nova\Spaceship'),
+
         ];
     }
 

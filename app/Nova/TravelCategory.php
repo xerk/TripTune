@@ -6,6 +6,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class TravelCategory extends Resource
@@ -49,7 +50,9 @@ class TravelCategory extends Resource
                 ->rules('required', 'max:255'),
 
             Trix::make('Description')
-                ->hideFromIndex()
+                ->hideFromIndex(),
+
+            HasMany::make('Spaceship Seats', 'spaceshipSeats', 'App\Nova\SpaceshipSeat')            
         ];
     }
 
