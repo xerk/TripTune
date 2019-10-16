@@ -2,8 +2,10 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
+use Vyuldashev\NovaMoneyField\Money;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class SpaceshipSeatPrice extends Resource
@@ -41,6 +43,12 @@ class SpaceshipSeatPrice extends Resource
     {
         return [
             ID::make()->sortable(),
+
+            BelongsTo::make('Flight', 'flight', 'App\Nova\Flight'),
+            
+            BelongsTo::make('Spaceship Seat', 'spaceshipSeat', 'App\Nova\Spaceship'),
+
+            Money::make('Price', 'EGP')
         ];
     }
 
