@@ -9,6 +9,7 @@ class CreateFlightCasesTable extends Migration {
 	{
 		Schema::create('flight_cases', function(Blueprint $table) {
 			$table->increments('id');
+			$table->string('name');
 			$table->integer('flight_id')->unsigned()->index();
 			$table->timestamps();
 			$table->softDeletes();
