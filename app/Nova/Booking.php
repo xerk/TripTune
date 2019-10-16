@@ -2,9 +2,9 @@
 
 namespace App\Nova;
 
-use DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -42,15 +42,16 @@ class Booking extends Resource
     public function fields(Request $request)
     {
         return [
+
             ID::make()->sortable(),
 
-            BelongsTo::make('User', 'user', 'App\Nova\User'),
+            BelongsTo::make('User', 'user', 'App\Nova\User')->searchable(),
 
             BelongsTo::make('Spaceship Seat Price', 'spaceshipSeatPrice', 'App\Nova\SpaceshipSeatPrice'),
 
-            DateTime::make('start_date'),
+            DateTime::make('Start Date'),
             
-            DateTime::make('end_date')
+            DateTime::make('End Date')
 
         ];
     }
