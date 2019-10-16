@@ -49,7 +49,7 @@ class TravelCategory extends Resource
                 ->rules('required', 'max:255'),
 
             Trix::make('Description')
-                ->onlyOnForms()
+                ->hideFromIndex()
         ];
     }
 

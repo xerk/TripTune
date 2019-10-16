@@ -67,7 +67,7 @@ class User extends Resource
                 ->rules('required'),
 
             File::make('Passport')
-                ->rules('required')->onlyOnForms(),
+                ->rules('required')->hideFromIndex()(),
         ];
     }
 
