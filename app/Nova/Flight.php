@@ -5,17 +5,17 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Station extends Resource
+class Flight extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Station';
+    public static $model = 'App\Flight';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -47,9 +47,11 @@ class Station extends Resource
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
+
+            BelongsTo::make('From Station', 'fromStation', 'App\Nova\Station'),
+
+            BelongsTo::make('To Station', 'toStation', 'App\Nova\Station')
             
-            HasMany::make('From Station', 'fromFlights', 'App\Nova\Flight'),
-            HasMany::make('To Station', 'toFlights', 'App\Nova\Flight')
         ];
     }
 
