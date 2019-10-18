@@ -12,6 +12,8 @@ class CreateFlightsTable extends Migration {
 			$table->string('name');
 			$table->integer('from_station_id')->unsigned()->index();
 			$table->integer('to_station_id')->unsigned()->index();
+			$table->dateTime('start_date');
+			$table->dateTime('end_date');
 			$table->timestamps();
 			$table->softDeletes();
 		});

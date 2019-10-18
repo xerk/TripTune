@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', 'LandingPageController@index')->name('landing-page');
+Route::get('/booking', 'BookingController@index')->name('booking');
+Route::post('/booking-success', 'BookingController@store')->name('booking.store');
+Route::get('/about', 'AboutController@index')->name('about');
+Route::get('/contact', 'ContactController@index')->name('contact');

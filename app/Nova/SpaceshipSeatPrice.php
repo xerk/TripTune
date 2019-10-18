@@ -46,7 +46,7 @@ class SpaceshipSeatPrice extends Resource
 
             BelongsTo::make('Flight', 'flight', 'App\Nova\Flight'),
             
-            BelongsTo::make('Spaceship Seat', 'spaceshipSeat', 'App\Nova\Spaceship'),
+            BelongsTo::make('Spaceship Seat', 'spaceshipSeat', 'App\Nova\SpaceshipSeat'),
 
             Money::make('Price', 'EGP')
         ];

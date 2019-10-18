@@ -11,6 +11,11 @@ class Flight extends Model
     protected $table = 'flights';
     public $timestamps = true;
 
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime'
+    ];
+
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];

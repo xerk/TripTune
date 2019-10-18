@@ -49,9 +49,9 @@ class Booking extends Resource
 
             BelongsTo::make('Spaceship Seat Price', 'spaceshipSeatPrice', 'App\Nova\SpaceshipSeatPrice'),
 
-            DateTime::make('Start Date'),
+            // DateTime::make('Start Date'),
             
-            DateTime::make('End Date')
+            // DateTime::make('End Date')
 
         ];
     }

@@ -5,6 +5,7 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -50,7 +51,11 @@ class Flight extends Resource
 
             BelongsTo::make('From Station', 'fromStation', 'App\Nova\Station'),
 
-            BelongsTo::make('To Station', 'toStation', 'App\Nova\Station')
+            BelongsTo::make('To Station', 'toStation', 'App\Nova\Station'),
+
+            DateTime::make('Start Date'),
+            
+            DateTime::make('End Date')
             
         ];
     }
